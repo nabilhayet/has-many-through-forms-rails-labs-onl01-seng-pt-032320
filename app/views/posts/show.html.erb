@@ -1,4 +1,4 @@
-<%= @post.title %>
+<%= link_to @post.title, post_path(@post) %>
 <%= @post.content %>
  <% @post.categories.each do |ca| %>
     <%= ca.name %>
@@ -6,4 +6,5 @@
 
  <% @post.comments.each do |co| %>
     <%= co.content %>
+    <%= co.user.unique %> 
  <% end %>
