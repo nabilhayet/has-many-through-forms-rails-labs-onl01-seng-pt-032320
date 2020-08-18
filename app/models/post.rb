@@ -17,5 +17,6 @@ class Post < ActiveRecord::Base
       self.users << user 
     end
   end
+  
 
 end
