@@ -9,5 +9,12 @@
         <%= categories_fields.text_field :name %>
     <% end %>
 
+    <%= f.collection_select :user_ids, User.all, :id, :username %>
+
+    <%= f.fields_for :users, post.users.build do |users_fields| %>
+        <%= users_fields.text_field :username %>
+        <%= users_fields.text_field :password %>
+      <% end %>
+
     <%= f.submit %>
   <% end %>

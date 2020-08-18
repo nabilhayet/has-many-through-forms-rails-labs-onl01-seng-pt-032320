@@ -6,5 +6,5 @@
 
  <% @post.comments.each do |co| %>
     <%= co.content %>
-    <%= co.user.unique %> 
+    <%= co.user.uniq %> 
  <% end %>
