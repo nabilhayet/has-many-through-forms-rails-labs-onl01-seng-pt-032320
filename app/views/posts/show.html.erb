@@ -1,1 +1,9 @@
+<%= @post.title %>
+<%= @post.content %>
+ <% @post.categories.each do |ca| %>
+    <%= ca.name %>
+ <% end %>
 
+ <% @post.comments.each do |co| %>
+    <%= co.content %>
+ <% end %>
