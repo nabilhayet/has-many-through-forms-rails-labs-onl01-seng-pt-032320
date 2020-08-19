@@ -1,1 +1,16 @@
+<%= form_for @post do |f| %>
+    <h3>Select an existing Category</h3> 
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+    <br>
+    <%= f.label :title %> 
+    <%= f.text_field :title %>
+    <%= f.label :Content %> 
+    <%= f.text_field :content %>
+    <br> 
+    <%= f.fields_for :categories, post.categories.build do |categories_fields| %>
+        <%= categories_fields.label :Name %>
+        <%= categories_fields.text_field :name %>
+    <% end %>
 
+   <%= f.submit %>
+  <% end %>
