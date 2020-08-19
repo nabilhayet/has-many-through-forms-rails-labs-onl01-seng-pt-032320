@@ -8,6 +8,10 @@
     <%= co.user.username %> says: <%= co.content %>
 <% end %>
 
+<% @post.users.each do |u| %>
+  <%= link_to u.username, user_path(u)%>, count: <%= u.comments.count %>
+<% end %>
+
 <br>
  <%= form_for @post.comments.build do |f| %> 
   <%= f.hidden_field :post_id, value: @post.id %>
