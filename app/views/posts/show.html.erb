@@ -4,21 +4,23 @@
     <%= ca.name %>
  <% end %>
 <br>
+<ul>
  <% @post.comments.each do |co| %>
-    <%= co.user.username %> says: <%= co.content %>
+  <li><%= co.user.username %> says: <%= co.content %></li> 
 <% end %>
-
-<% @post.users.each do |u| %>
-  <%= link_to u.username, user_path(u)%>, count: <%= u.comments.count %>
+</ul>
+<ul>
+<% @post.users.distinct.each do |u| %>
+  <li><%= link_to u.username, user_path(u)%>, count: <%= u.comments.count %></li>
 <% end %>
-
+</ul>
 <br>
  <%= form_for @post.comments.build do |f| %> 
   <%= f.hidden_field :post_id, value: @post.id %>
-  <%= f.collection_select :user_id, User.all, :id, :username %>
+  <%= f.collection_select :user_id, User.all, :id, :username  %>
 <br>
  <%= f.fields_for :user, User.new do |user_fields| %>
-  <%= user_fields.label :Username %> 
+  <%= user_fields.label :username %> 
   <%= user_fields.text_field :username %>
  <% end %>
 <br> 
